@@ -17,11 +17,10 @@ public class NetworkAnalysisRecursive {
         return calculateSize(Array.of(root), 0L);
     }
 
-    public static Long calculateSize(Array<Node> nodes, Long accumulator) {
+    private static Long calculateSize(Array<Node> nodes, Long accumulator) {
         if (nodes.isEmpty()) {
             return accumulator;
         } else {
-            printStackTrace();
             Node head = nodes.head();
             return calculateSize(
                 nodes

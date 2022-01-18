@@ -23,7 +23,6 @@ public class NetworkAnalysisTailRecursive {
         if (nodes.isEmpty()) {
             return done(accumulator);
         } else {
-            printStackTrace();
             Node head = nodes.head();
             return () -> calculateSize(
                 nodes

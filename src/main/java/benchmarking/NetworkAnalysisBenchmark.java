@@ -1,5 +1,6 @@
 package benchmarking;
 
+import network.NetworkAnalysisHeadRecursive;
 import network.NetworkAnalysisIterative;
 import network.NetworkAnalysisTailRecursive;
 import network.Node;
@@ -10,13 +11,19 @@ import org.openjdk.jmh.infra.Blackhole;
 public class NetworkAnalysisBenchmark {
     @State(Scope.Benchmark)
     public static class InitializedNetwork {
-        public Node root = new SetupNetwork().setupNetwork(50000);
+        public Node root = new SetupNetwork().setupNetwork(5000);
     }
 
     @Benchmark
     @BenchmarkMode(Mode.Throughput)
     public void benchmarkIterativeNetworkAnalysis(Blackhole blackhole, InitializedNetwork state) {
-        blackhole.consume(NetworkAnalysisIterative.calculateSizeOfNetworkIterative(state.root));
+        blackhole.consume(NetworkAnalysisIterative.calculateSizeOfNetwork(state.root));
+    }
+
+    @Benchmark
+    @BenchmarkMode(Mode.Throughput)
+    public void benchmarkHeadRecursiveNetworkAnalysis(Blackhole blackhole, InitializedNetwork state) {
+        blackhole.consume(NetworkAnalysisHeadRecursive.calculateSizeOfNetwork(state.root));
     }
 
     @Benchmark

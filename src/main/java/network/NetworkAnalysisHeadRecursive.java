@@ -4,12 +4,10 @@ import io.vavr.collection.Array;
 import lombok.extern.slf4j.Slf4j;
 import network.setup.SetupNetwork;
 
-import static tailrecursion.StackTraceHelper.printStackTrace;
-
 @Slf4j
-public class NetworkAnalysisRecursive {
+public class NetworkAnalysisHeadRecursive {
     public static void main(String... args) {
-        Node network = new SetupNetwork().setupNetwork(10);
+        Node network = new SetupNetwork().setupNetwork(5000);
         log.info(String.format("Size of network: %d", calculateSizeOfNetwork(network)));
     }
 
